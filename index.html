@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt=BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de tarefas</title>
-    <link rel="stylesheet" href="./src/css/style.css">
-    <script defer src="./src/js/scripy.js"></script>
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="./src/css/estilo.css">
+    <script defer src="./src/js/script.js"></script>
+    <title>Lista de Tarefas</title>
 </head>
 <body>
     
+    <header>
+        <h1>Listas de Tarefas</h1>
+    </header>
+
+    <main>
+        <p>
+            <label for="task">Tarefas</label>
+            <input type="text" id="task"/>
+        </p>
+        <button id="adicionarTarefa" onclick="adicionarTarefa()">Adicionar Tarefa</button>
+        <button id="removerTarefa" onclick="removerTarefa()">Remover Tarefa</button>
+
+        <p id="lista"></p>
+    </main>
 </body>
 </html>
