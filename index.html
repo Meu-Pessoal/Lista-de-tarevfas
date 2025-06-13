@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS EXTERNO -->
-    <link rel="stylesheet" href="./src/css/estilo.css">
+    <link rel="stylesheet" href="./src/css/style.css">
     <script defer src="./src/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Lista de Tarefas</title>
@@ -16,13 +16,14 @@
     </header>
 
     <main>
-        <p>
-            <label for="task">Tarefas</label>
+        <p class="task-input">
+            <label for="task">Tarefa</label>
             <input type="text" id="task"/>
         </p>
-        <button id="adicionarTarefa" onclick="adicionarTarefa()">Adicionar Tarefa</button>
-        <button id="removerTarefa" onclick="removerTarefa()">Remover Tarefa</button>
-
+        <div class="botoes">
+            <button class="botao" id="adicionarTarefa" onclick="adicionarTarefa()">Adicionar Tarefa</button>
+            <button class="botao" id="salvarTarefa" onclick="salvarTarefa()">Salvar Tarefa</button>
+        </div>
         <p id="lista"></p>
     </main>
 </body>

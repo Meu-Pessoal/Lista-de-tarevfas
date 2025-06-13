@@ -39,19 +39,40 @@ function adicionarTarefa(){
 }
 
 
+const taskInput = document.getElementById("task")
+
+if (taskInput) {
+    taskInput.addEventListener("keypress", (e)=>{
+        if (e.key == 'Enter') {
+            e.preventDefault()
+            adicionarTarefa()
+        }
+    })
+}
+
+
+
 //FUNÇÃO LISTAR TAREFAS
 
 function listarTarefas(){
     let valor="";
     for(let i=0; i <tarefas.length;i++){
-        valor += tarefas[i] + "<br>";
+        valor += `
+        <div class="task-item">
+            <span>${tarefas[i]}</span>
+            <div class="botoes">
+                <button class="botao" onclick="editarTarefa(${i})">Editar</button>
+                <button class="botao" onclick="removerTarefa(${i})">Remover</button>
+            </div>
+        </div>
+        `
     }
     document.getElementById("lista").innerHTML =valor;
 }
 
 //FUNÇÃO REMOVER TAREFA
 
-function removerTarefa(){
+function removerTarefa(indice){
     if (tarefas.length == 0) {
         Swal.fire({
             icon:"info",
@@ -73,7 +94,7 @@ function removerTarefa(){
         confirmButtonText:"Sim"
     }).then((result)=>{
         if(result.isConfirmed){
-            tarefas.pop();// pop- remove o ultimo item
+            tarefas.splice(indice, 1);// pop- remove o ultimo item
             listarTarefas();
             Swal.fire(
                 "Removido",
@@ -82,4 +103,42 @@ function removerTarefa(){
             )
         }
     })  
+}
+
+function editarTarefa (indice) {
+    document.getElementById("task").value = tarefas[indice]
+    indiceEditar = indice
+    document.getElementById("task").focus()
+}
+
+function salvarTarefa () {
+    if (validarCampo()) {
+        Swal.fire({
+            icon:"warning",
+            title:"Atenção",
+            text:"Preencha o campo da tarefa",
+            confirmButtonColor:"#3085d6",
+            confirmButtonText:"OK"
+        })
+    } else if (indiceEditar !== -1) {
+        tarefas[indiceEditar] = document.getElementById("task").value
+        indiceEditar = -1
+        listarTarefas()
+        Swal.fire({
+            icon:"success",
+            title:"Sucesso",
+            text:"Tarefa editada com sucesso",
+            confirmButtonColor:"#3085d6",
+            confirmButtonText:"OK"
+        })
+    } else {
+        Swal.fire({
+            icon:"warning",
+            title:"Atenção",
+            text:"Preencha o campo da tarefa",
+            confirmButtonColor:"#3085d6",
+            confirmButtonText:"OK"
+        })
+    }
+    document.getElementById("task").focus(  )
 }
