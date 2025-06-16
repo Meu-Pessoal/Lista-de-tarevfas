@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
-    background: #f4f4f4;
+    background: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
+}
+
+#container {
+    display: flex;
+    min-width: 100%;
+    width: 700px;
+    gap: 20px;
+    align-items: center;
 }
 
 .task-input {
@@ -20,28 +31,33 @@ body {
     align-items: center;
     margin: 20px 0;
     gap: 5px;
+    width: 60%;
 }
 
 .task-input input {
     width: 100%;
-    padding: 10px;
-    
+    padding: 5px 10px;
+    border: #333 solid 2px;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 .botoes {
     display: flex;
     gap: 10px;
     justify-content: center;
+    height: 100%;
 }
 
 .botao {
     background: blue;
     color: #fff;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     font-size: 1rem;
+    width: 170px;
 }
 
 .botao:hover {
@@ -55,19 +71,25 @@ body {
     flex-direction: column;
     min-height: 500px;
     padding: 10px;
-    border: #000 2px solid;
     margin-top: 10px;
     gap: 10px;
-    min-width: 700px;
+    width: 100%;
 }
 
 .task-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-width: 700px;
+    width: 100%;
+    gap: 20px;
 }
 
-.task-item span{
+.task-item .botoes {
+    justify-self: end;
+}
+
+.task-item p{
     color: #000;
     font-size: 1.5rem;
 }

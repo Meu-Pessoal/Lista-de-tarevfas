@@ -59,7 +59,7 @@ function listarTarefas(){
     for(let i=0; i <tarefas.length;i++){
         valor += `
         <div class="task-item">
-            <span>${tarefas[i]}</span>
+            <p>${tarefas[i]}</p>
             <div class="botoes">
                 <button class="botao" onclick="editarTarefa(${i})">Editar</button>
                 <button class="botao" onclick="removerTarefa(${i})">Remover</button>
