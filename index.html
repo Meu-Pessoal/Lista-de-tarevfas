@@ -16,16 +16,23 @@
     </header>
 
     <main>
-        <div id="container">
+        <div id="container" class="active">
             <p class="task-input">
                 <input type="text" id="task" placeholder="Adicione uma tarefa"/>
             </p>
             <div class="botoes">
                 <button class="botao" id="adicionarTarefa" onclick="adicionarTarefa()">Adicionar Tarefa</button>
+            </div>
+        </div>
+        <p id="lista" class="active"></p>
+
+        <div id="containerEditar">
+            <h2>Editar tarefa</h2>
+            <div class="botoes">
+                <input type="text" id="taskEdit" placeholder="Edite a tarefa"/>
                 <button class="botao" id="salvarTarefa" onclick="salvarTarefa()">Salvar Tarefa</button>
             </div>
         </div>
-        <p id="lista"></p>
     </main>
 </body>
 </html>

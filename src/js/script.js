@@ -8,6 +8,12 @@ const validarCampo=()=>{
     if(document.getElementById("task").value =="") valida=true;
     return valida;
 }
+
+const validarCampoEdit = ()=> {
+    let valida =false;
+    if(document.getElementById("taskEdit").value =="") valida=true;
+    return valida;
+}
 //FUNÇÃO PARA ADICIONAR TAREFA
 
 function adicionarTarefa(){
@@ -85,12 +91,12 @@ function removerTarefa(indice){
     }
     Swal.fire({
         icon:"warnning",
-        title:"Remover Tarefa?",
+        title:"Remover Tarefa",
         text:"Tem certeza que deseja remover a tarefa ?",
         showCancelButton:true,    
-        confirmButtonColor:"#4F0D30FF",
-        cancelButtonColor: "#d33",
-        confirmButtonText:"Sim,remover",
+        confirmButtonColor:"#f63e01",
+        cancelButtonColor: "#b1aeae",
+        confirmButtonText:"Sim, remover",
         confirmButtonText:"Sim"
     }).then((result)=>{
         if(result.isConfirmed){
@@ -105,14 +111,22 @@ function removerTarefa(indice){
     })  
 }
 
+const lista = document.getElementById("lista")
+const container = document.getElementById("container")
+const campoEditar = document.getElementById("containerEditar")
+
 function editarTarefa (indice) {
-    document.getElementById("task").value = tarefas[indice]
+    lista.classList.remove("active")
+    container.classList.remove("active")
+    campoEditar.classList.add("active")
+
+    document.getElementById("taskEdit").value = tarefas[indice]
     indiceEditar = indice
-    document.getElementById("task").focus()
+    document.getElementById("taskEdit").focus()
 }
 
 function salvarTarefa () {
-    if (validarCampo()) {
+    if (validarCampoEdit()) {
         Swal.fire({
             icon:"warning",
             title:"Atenção",
@@ -121,7 +135,7 @@ function salvarTarefa () {
             confirmButtonText:"OK"
         })
     } else if (indiceEditar !== -1) {
-        tarefas[indiceEditar] = document.getElementById("task").value
+        tarefas[indiceEditar] = document.getElementById("taskEdit").value
         indiceEditar = -1
         listarTarefas()
         Swal.fire({
@@ -131,6 +145,9 @@ function salvarTarefa () {
             confirmButtonColor:"#3085d6",
             confirmButtonText:"OK"
         })
+        lista.classList.add("active")
+        container.classList.add("active")
+        campoEditar.classList.remove("active")
     } else {
         Swal.fire({
             icon:"warning",
@@ -140,5 +157,5 @@ function salvarTarefa () {
             confirmButtonText:"OK"
         })
     }
-    document.getElementById("task").focus(  )
+    document.getElementById("task").focus()
 }
